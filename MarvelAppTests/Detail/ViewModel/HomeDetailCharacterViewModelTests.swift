@@ -12,8 +12,8 @@ import Combine
 
 final class HomeDetailCharacterViewModelTests: XCTestCase {
     
-    private var comicsRepoSpy = CharactersComicsRepositorySpy()
-    private var storiesRepoSpy = CharactersStoriesRepositorySpy()
+    private var comicsRepoSpy = CharactersComicsRepositoryProtocolSpy()
+    private var storiesRepoSpy = CharactersStoriesRepositoryProtocolSpy()
     private let presentableSpy = HomeDetailCharactersVieModelPresentableSpy()
     private let character: Character = .fixture(id: 99)
     

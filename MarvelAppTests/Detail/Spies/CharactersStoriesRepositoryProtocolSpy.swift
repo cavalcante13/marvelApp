@@ -11,7 +11,7 @@ import Requests
 
 @testable import MarvelApp
 
-final class CharactersStoriesRepositorySpy: CharactersStoriesRepositoryProtocol {
+final class CharactersStoriesRepositoryProtocolSpy: CharactersStoriesRepositoryProtocol {
     enum Method: Equatable {
         case getStories(Int)
     }

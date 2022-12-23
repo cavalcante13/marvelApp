@@ -14,7 +14,7 @@ import Combine
 
 final class HomeCharactersViewModelTests: XCTestCase {
     
-    private let repositorySpy = CharactersRepositorySpy()
+    private let repositorySpy = CharactersRepositoryProtocolSpy()
     private let presentableSpy = HomeCharactersVieModelPresentableSpy()
     
     private lazy var sut: HomeCharactersViewModelProtocol = {
