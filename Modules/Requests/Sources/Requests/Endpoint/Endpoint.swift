@@ -74,3 +74,11 @@ extension Endpoint {
         return request
     }
 }
+extension URLRequest {
+    var components: URLComponents? {
+        guard let url = self.url else {
+            return nil
+        }
+        return URLComponents(url: url, resolvingAgainstBaseURL: false)
+    }
+}
