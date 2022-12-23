@@ -32,9 +32,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
         }
-        
-        //the SVProgressHUD needs this to work
-        AppDelegate.shared?.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
