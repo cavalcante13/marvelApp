@@ -39,7 +39,3 @@ MarvelApp project contains Unit Tests
 - Specific error handling
 - Add UI tests
 - Add ViewControllers tests
-
-License
-----
-MIT
