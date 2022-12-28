@@ -18,7 +18,7 @@ final class ErrorView: View, GenericErrorViewProtocol {
     
     private var stackView: UIStackView = .init()
     private var messageLabel: UILabel = .init()
-    private var retryButton: UIButton = .init(type: .custom)
+    private var tryAgainButton: UIButton = .init(type: .custom)
     var action: ActionButton?
     
     private var message: String {
@@ -42,7 +42,7 @@ final class ErrorView: View, GenericErrorViewProtocol {
     override func addViewHierarchy() {
         addSubview(stackView)
         stackView.addArrangedSubview(messageLabel)
-        stackView.addArrangedSubview(retryButton)
+        stackView.addArrangedSubview(tryAgainButton)
     }
     
     override func setupConstraints() {
@@ -72,9 +72,9 @@ final class ErrorView: View, GenericErrorViewProtocol {
     }
     
     private func configureRetryButton() {
-        retryButton.setTitle("Tentar novamente", for: .normal)
-        retryButton.setTitleColor(.systemBlue, for: .normal)
-        retryButton.addTarget(self, action: #selector(retryButtonAction(_:)), for: .touchUpInside)
+        tryAgainButton.setTitle(Strings.ErrorView.TryAgain.Button.title, for: .normal)
+        tryAgainButton.setTitleColor(.systemBlue, for: .normal)
+        tryAgainButton.addTarget(self, action: #selector(retryButtonAction(_:)), for: .touchUpInside)
     }
     
     @objc

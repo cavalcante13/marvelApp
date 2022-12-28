@@ -101,7 +101,7 @@ final class HomeDetailCharacterViewController: ViewController {
     private func configureImageView() {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "img-not-found")
+        imageView.image = Assets.imgNotFound.image
         
         if let url = viewModel.character.thumbnail?.imageUrl {
             imageView.kf.setImage(with: url, placeholder: imageView.image)

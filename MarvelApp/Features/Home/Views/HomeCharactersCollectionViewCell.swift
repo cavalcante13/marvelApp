@@ -39,7 +39,7 @@ final class HomeCharactersCollectionViewCell: CollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.imageView.image = UIImage(named: "img-not-found")
+        self.imageView.image = Assets.imgNotFound.image
     }
     
     func set(character: Character) {
@@ -61,7 +61,7 @@ final class HomeCharactersCollectionViewCell: CollectionViewCell {
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "img-not-found")
+        imageView.image = Assets.imgNotFound.image
     }
     
     private func configureNameLabel() {

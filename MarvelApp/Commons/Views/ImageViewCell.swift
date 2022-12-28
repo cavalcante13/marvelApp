@@ -32,7 +32,7 @@ final class ImageViewCell: CollectionViewCell {
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "img-not-found")
+        imageView.image = Assets.imgNotFound.image
     }
     
     func set(thumbnail: ThumbImage?) {

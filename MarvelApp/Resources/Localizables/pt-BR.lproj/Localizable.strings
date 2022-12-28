@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  MarvelApp
+
+  Created by Diego Costa on 28/12/22.
+  
+*/
+
+//HomeCharactersViewController
+"Home.Navigation.Title" = "Marvel App";
+
+//CompositionalLayoutSection
+"Layout.Sections.Releases.Title" = "Lançamentos";
+"Layout.Sections.Populars.Title" = "Populares";
+"Layout.Sections.Comics.Title" = "Quadrinhos";
+"Layout.Sections.Stories.Title" = "Histórias";
+
+//ErrorView
+"ErrorView.TryAgain.Button.Title" = "Tentar novamente";

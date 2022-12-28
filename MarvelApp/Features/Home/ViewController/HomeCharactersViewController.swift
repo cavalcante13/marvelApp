@@ -39,7 +39,7 @@ final class HomeCharactersViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Marvel App"
+        self.navigationItem.title = Strings.Home.Navigation.title
         self.view.backgroundColor = .black
         self.viewModel.loadData()
     }

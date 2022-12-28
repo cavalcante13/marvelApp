@@ -1,0 +1,20 @@
+input_dir: MarvelApp/Resources
+output_dir: MarvelApp/Resources/SwiftGen
+xcassets:
+  inputs: ./
+  filter: .+\.xcassets$
+  outputs:
+    - templateName: swift5
+      output: MarvelAssets.swift
+      params:
+        enumName: Assets
+        publicAccess: true
+strings:
+  inputs: Localizables/en.lproj
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift5
+      output: MarvelStrings.swift
+      params:
+        enumName: Strings
+        publicAccess: true
