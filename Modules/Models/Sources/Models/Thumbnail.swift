@@ -8,6 +8,7 @@
 import Foundation
 
 public struct ThumbImage: Codable, Hashable {
+    private let notAvailableUrl = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     public var uuid: UUID = .init()
     public var path: String?
     public var imageExtension: String?
@@ -31,6 +32,6 @@ public struct ThumbImage: Codable, Hashable {
     }
     
     public var isAvaliable: Bool {
-        return path != "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+        return path != notAvailableUrl
     }
 }
