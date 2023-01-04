@@ -72,7 +72,7 @@ final class ErrorView: View, GenericErrorViewProtocol {
     }
     
     private func configureRetryButton() {
-        tryAgainButton.setTitle(Strings.ErrorView.TryAgain.Button.title, for: .normal)
+        tryAgainButton.setTitle(Strings.Localizable.ErrorView.TryAgain.Button.title, for: .normal)
         tryAgainButton.setTitleColor(.systemBlue, for: .normal)
         tryAgainButton.addTarget(self, action: #selector(retryButtonAction(_:)), for: .touchUpInside)
     }

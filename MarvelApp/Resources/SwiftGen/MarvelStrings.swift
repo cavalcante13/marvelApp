@@ -3,47 +3,78 @@
 
 import Foundation
 
-// swiftlint:disable superfluous_disable_command file_length implicit_return prefer_self_in_static_references
+// swiftlint:disable superfluous_disable_command file_length implicit_return
 
 // MARK: - Strings
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum Strings {
-  public enum ErrorView {
-    public enum TryAgain {
-      public enum Button {
-        /// Try again
-        public static let title = Strings.tr("Localizable", "ErrorView.TryAgain.Button.Title", fallback: "Try again")
+  public enum Accessibility {
+    public enum App {
+      public enum Navigation {
+        /// Back
+        public static let backButton = Strings.tr("Accessibility", "App.Navigation.BackButton")
+      }
+    }
+    public enum Detail {
+      public enum Characters {
+        /// %d of %d
+        public static func comics(_ p1: Int, _ p2: Int) -> String {
+          return Strings.tr("Accessibility", "Detail.Characters.comics", p1, p2)
+        }
+        /// %d of %d, story %@
+        public static func stories(_ p1: Int, _ p2: Int, _ p3: Any) -> String {
+          return Strings.tr("Accessibility", "Detail.Characters.stories", p1, p2, String(describing: p3))
+        }
+      }
+    }
+    public enum Home {
+      public enum Characters {
+        /// %d of %d, character %@
+        public static func item(_ p1: Int, _ p2: Int, _ p3: Any) -> String {
+          return Strings.tr("Accessibility", "Home.Characters.item", p1, p2, String(describing: p3))
+        }
+        /// Section %@
+        public static func section(_ p1: Any) -> String {
+          return Strings.tr("Accessibility", "Home.Characters.section", String(describing: p1))
+        }
       }
     }
   }
-  public enum Home {
-    public enum Navigation {
-      /// Localizable.strings
-      ///   MarvelApp
-      /// 
-      ///   Created by Diego Costa on 28/12/22.
-      public static let title = Strings.tr("Localizable", "Home.Navigation.Title", fallback: "Marvel App")
+  public enum Localizable {
+    public enum ErrorView {
+      public enum TryAgain {
+        public enum Button {
+          /// Try again
+          public static let title = Strings.tr("Localizable", "ErrorView.TryAgain.Button.Title")
+        }
+      }
     }
-  }
-  public enum Layout {
-    public enum Sections {
-      public enum Comics {
-        /// Comics
-        public static let title = Strings.tr("Localizable", "Layout.Sections.Comics.Title", fallback: "Comics")
+    public enum Home {
+      public enum Navigation {
+        /// Marvel App
+        public static let title = Strings.tr("Localizable", "Home.Navigation.Title")
       }
-      public enum Populars {
-        /// Populars
-        public static let title = Strings.tr("Localizable", "Layout.Sections.Populars.Title", fallback: "Populars")
-      }
-      public enum Releases {
-        /// Releases
-        public static let title = Strings.tr("Localizable", "Layout.Sections.Releases.Title", fallback: "Releases")
-      }
-      public enum Stories {
-        /// Stories
-        public static let title = Strings.tr("Localizable", "Layout.Sections.Stories.Title", fallback: "Stories")
+    }
+    public enum Layout {
+      public enum Sections {
+        public enum Comics {
+          /// Comics
+          public static let title = Strings.tr("Localizable", "Layout.Sections.Comics.Title")
+        }
+        public enum Populars {
+          /// Populars
+          public static let title = Strings.tr("Localizable", "Layout.Sections.Populars.Title")
+        }
+        public enum Releases {
+          /// Releases
+          public static let title = Strings.tr("Localizable", "Layout.Sections.Releases.Title")
+        }
+        public enum Stories {
+          /// Stories
+          public static let title = Strings.tr("Localizable", "Layout.Sections.Stories.Title")
+        }
       }
     }
   }
@@ -54,8 +85,8 @@ public enum Strings {
 // MARK: - Implementation Details
 
 extension Strings {
-  private static func tr(_ table: String, _ key: String, _ args: CVarArg..., fallback value: String) -> String {
-    let format = BundleToken.bundle.localizedString(forKey: key, value: value, table: table)
+  private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }

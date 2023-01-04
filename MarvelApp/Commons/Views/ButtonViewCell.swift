@@ -31,8 +31,10 @@ class ButtonViewCell: CollectionViewCell {
     private func configureButton() {
         button.setTitleColor(.systemBlue, for: .normal)
         button.contentHorizontalAlignment = .left
-        button.titleLabel?.font = .systemFont(ofSize: 14)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .subheadline)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.addTarget(self, action: #selector(retryButtonAction(_:)), for: .touchUpInside)
+        button.accessibilityTraits = .staticText
     }
     
     @objc
@@ -43,5 +45,10 @@ class ButtonViewCell: CollectionViewCell {
     func set(title: String?, action: ActionButton?) {
         self.action = action
         self.button.setTitle(title, for: .normal)
+    }
+    
+    func setAccessibility(message: String) {
+        isAccessibilityElement = true
+        accessibilityLabel = message
     }
 }

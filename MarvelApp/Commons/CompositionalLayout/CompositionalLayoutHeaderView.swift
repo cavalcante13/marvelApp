@@ -27,7 +27,10 @@ final class CompositionalLayoutHeaderView: UICollectionReusableView {
     }
 
     private func prepareLayout() {
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        let font = UIFont.boldSystemFont(ofSize: 18)
+        let fontMetrics = UIFontMetrics(forTextStyle: .headline)
+        label.font = fontMetrics.scaledFont(for: font)
+        label.adjustsFontForContentSizeCategory = true
         label.textColor = .white
         addSubview(label)
         
@@ -39,5 +42,6 @@ final class CompositionalLayoutHeaderView: UICollectionReusableView {
 
     func set(title: String) {
         self.label.text = title
+        self.label.accessibilityLabel = Strings.Accessibility.Home.Characters.section(title)
     }
 }

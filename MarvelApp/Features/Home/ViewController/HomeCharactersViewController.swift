@@ -39,7 +39,7 @@ final class HomeCharactersViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = Strings.Home.Navigation.title
+        self.navigationItem.title = Strings.Localizable.Home.Navigation.title
         self.view.backgroundColor = .black
         self.viewModel.loadData()
     }
@@ -92,6 +92,9 @@ final class HomeCharactersViewController: ViewController {
         case .characters(let data):
             let cell = collectionView.dequeue(cell: HomeCharactersCollectionViewCell.self, indexPath: indexPath)
             cell.set(character: data)
+            cell.setAccessibility(
+                message: Strings.Accessibility.Home.Characters.item(indexPath.item + 1, snapshot.numberOfItems, data.name ?? "")
+            )
             return cell
         default:
             return nil

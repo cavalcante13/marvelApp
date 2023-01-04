@@ -47,10 +47,16 @@ final class HomeCharactersCollectionViewCell: CollectionViewCell {
         self.nameLabel.text = character.name
         
         if character.thumbnail?.isAvaliable == true, let url = character.thumbnail?.imageUrl {
-            imageView.kf.setImage(with: url, placeholder: imageView.image)
+            imageView.kf.setImage(with: url, placeholder: Assets.imgNotFound.image)
         }
     }
     
+    func setAccessibility(message: String) {
+        isAccessibilityElement = true
+        accessibilityTraits = .button
+        accessibilityLabel = message
+    }
+
     private func configureStackView() {
         stackView.axis = .vertical
         stackView.distribution = .fill
@@ -61,6 +67,7 @@ final class HomeCharactersCollectionViewCell: CollectionViewCell {
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.accessibilityElementsHidden = true
         imageView.image = Assets.imgNotFound.image
     }
     
@@ -68,6 +75,8 @@ final class HomeCharactersCollectionViewCell: CollectionViewCell {
         nameLabel.numberOfLines = 0
         nameLabel.textAlignment = .left
         nameLabel.textColor = .white
-        nameLabel.font = .boldSystemFont(ofSize: 18)
+        nameLabel.font = .preferredFont(forTextStyle: .title3)
+        nameLabel.adjustsFontForContentSizeCategory = true
+        nameLabel.isAccessibilityElement = false
     }
 }

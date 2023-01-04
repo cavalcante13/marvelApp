@@ -96,12 +96,15 @@ final class HomeDetailCharacterViewController: ViewController {
         stackView.spacing = 16
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = .init(top: 0, left: 16, bottom: 0, right: 16)
+        stackView.accessibilityElements = [nameLabel, descriptionLabel, collectionView]
     }
     
     private func configureImageView() {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.image = Assets.imgNotFound.image
+        imageView.isAccessibilityElement = false
+        imageView.accessibilityElementsHidden = false
         
         if let url = viewModel.character.thumbnail?.imageUrl {
             imageView.kf.setImage(with: url, placeholder: imageView.image)
@@ -113,7 +116,8 @@ final class HomeDetailCharacterViewController: ViewController {
         nameLabel.numberOfLines = 0
         nameLabel.textAlignment = .left
         nameLabel.textColor = .white
-        nameLabel.font = .boldSystemFont(ofSize: 26)
+        nameLabel.font = .preferredFont(forTextStyle: .title1)
+        nameLabel.adjustsFontForContentSizeCategory = true
     }
     
     private func configureDescriptionLabel() {
@@ -121,7 +125,8 @@ final class HomeDetailCharacterViewController: ViewController {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .left
         descriptionLabel.textColor = .white
-        descriptionLabel.font = .boldSystemFont(ofSize: 14)
+        descriptionLabel.font = .preferredFont(forTextStyle: .subheadline)
+        descriptionLabel.adjustsFontForContentSizeCategory = true
     }
     
     private func configureDatasource() {
@@ -169,10 +174,16 @@ final class HomeDetailCharacterViewController: ViewController {
         case .comics(let data):
             let cell = collectionView.dequeue(cell: ImageViewCell.self, indexPath: indexPath)
             cell.set(thumbnail: data.thumbnail)
+            cell.setAccessibility(
+                message: Strings.Accessibility.Detail.Characters.comics(indexPath.item + 1, snapshot.numberOfItems(inSection: .comics))
+            )
             return cell
         case .stories(let data):
             let cell = collectionView.dequeue(cell: ButtonViewCell.self, indexPath: indexPath)
             cell.set(title: data.title, action: nil)
+            cell.setAccessibility(
+                message: Strings.Accessibility.Detail.Characters.stories(indexPath.item + 1, snapshot.numberOfItems(inSection: .stories), data.title ?? "")
+            )
             return cell
         default:
             return nil

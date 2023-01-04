@@ -25,6 +25,7 @@
 		D378BC162925B543006ACE83 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378BC152925B543006ACE83 /* Typealias.swift */; };
 		D378BC182925B6A7006ACE83 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378BC172925B6A7006ACE83 /* ErrorView.swift */; };
 		D378BC1A2925B6EE006ACE83 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378BC192925B6EE006ACE83 /* View.swift */; };
+		F10CB1B42965215800B73B59 /* Accessibility.strings in Resources */ = {isa = PBXBuildFile; fileRef = F10CB1B62965215800B73B59 /* Accessibility.strings */; };
 		F198C777294CF41F007E0A65 /* HomeDetailCharacterViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F198C776294CF41F007E0A65 /* HomeDetailCharacterViewModelProtocol.swift */; };
 		F1A4B0D82953F9A900A793ED /* HomeCharactersVieModelPresentableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A4B0D72953F9A900A793ED /* HomeCharactersVieModelPresentableSpy.swift */; };
 		F5030C102922708F00E3013E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5030C0F2922708F00E3013E /* AppDelegate.swift */; };
@@ -106,6 +107,8 @@
 		D378BC152925B543006ACE83 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		D378BC172925B6A7006ACE83 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		D378BC192925B6EE006ACE83 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		F10CB1B52965215800B73B59 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Accessibility.strings; sourceTree = "<group>"; };
+		F10CB1B72965215C00B73B59 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Accessibility.strings"; sourceTree = "<group>"; };
 		F198C764294CB819007E0A65 /* MarvelAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F198C776294CF41F007E0A65 /* HomeDetailCharacterViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailCharacterViewModelProtocol.swift; sourceTree = "<group>"; };
 		F1A4B0D72953F9A900A793ED /* HomeCharactersVieModelPresentableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharactersVieModelPresentableSpy.swift; sourceTree = "<group>"; };
@@ -450,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				F5CEDD34295C9E7B00D19AA7 /* Localizable.strings */,
+				F10CB1B62965215800B73B59 /* Accessibility.strings */,
 			);
 			path = Localizables;
 			sourceTree = "<group>";
@@ -624,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5030C1C2922709000E3013E /* LaunchScreen.storyboard in Resources */,
+				F10CB1B42965215800B73B59 /* Accessibility.strings in Resources */,
 				F5CEDD32295C9E7B00D19AA7 /* Localizable.strings in Resources */,
 				F5030C192922709000E3013E /* Assets.xcassets in Resources */,
 			);
@@ -725,6 +730,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F10CB1B62965215800B73B59 /* Accessibility.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F10CB1B52965215800B73B59 /* en */,
+				F10CB1B72965215C00B73B59 /* pt-BR */,
+			);
+			name = Accessibility.strings;
+			sourceTree = "<group>";
+		};
 		F5030C1A2922709000E3013E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -908,6 +922,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6L8CQ3XWYD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -936,6 +951,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6L8CQ3XWYD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

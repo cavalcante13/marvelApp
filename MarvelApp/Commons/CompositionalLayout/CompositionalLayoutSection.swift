@@ -16,13 +16,13 @@ enum CompositionalLayoutSection: Int, Hashable {
     var title: String {
         switch self {
         case .releases:
-            return Strings.Layout.Sections.Releases.title
+            return Strings.Localizable.Layout.Sections.Releases.title
         case .populars:
-            return Strings.Layout.Sections.Populars.title
+            return Strings.Localizable.Layout.Sections.Populars.title
         case .comics:
-            return Strings.Layout.Sections.Comics.title
+            return Strings.Localizable.Layout.Sections.Comics.title
         case .stories:
-            return Strings.Layout.Sections.Stories.title
+            return Strings.Localizable.Layout.Sections.Stories.title
         }
     }
 

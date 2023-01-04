@@ -11,6 +11,7 @@ final class AppNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         self.prepareLayout()
     }
 
@@ -28,5 +29,13 @@ final class AppNavigationController: UINavigationController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+extension AppNavigationController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        viewController.navigationItem.backBarButtonItem = .init(title: " ", style: .done, target: nil, action: nil)
+        viewController.navigationItem.backBarButtonItem?.accessibilityLabel = Strings.Accessibility.App.Navigation.backButton
     }
 }

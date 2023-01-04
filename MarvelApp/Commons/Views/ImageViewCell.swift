@@ -33,6 +33,7 @@ final class ImageViewCell: CollectionViewCell {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.image = Assets.imgNotFound.image
+        imageView.isAccessibilityElement = true
     }
     
     func set(thumbnail: ThumbImage?) {
@@ -40,6 +41,11 @@ final class ImageViewCell: CollectionViewCell {
         if thumbnail?.isAvaliable == true, let url = thumbnail?.imageUrl {
             imageView.kf.setImage(with: url, placeholder: imageView.image)
         }
+    }
+    
+    func setAccessibility(message: String) {
+        isAccessibilityElement = true
+        accessibilityLabel = message
     }
 }
 

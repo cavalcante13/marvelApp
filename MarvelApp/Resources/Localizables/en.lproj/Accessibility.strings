@@ -1,0 +1,12 @@
+/* 
+  Accessibility.strings
+  MarvelApp
+
+  Created by Diego on 03/01/23.
+  
+*/
+"App.Navigation.BackButton" = "Back";
+"Home.Characters.item" = "%d of %d, character %@";
+"Detail.Characters.comics" = "%d of %d";
+"Detail.Characters.stories" = "%d of %d, story %@";
+"Home.Characters.section" = "Section %@";
