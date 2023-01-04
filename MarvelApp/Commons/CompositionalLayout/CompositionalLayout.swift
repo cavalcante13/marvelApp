@@ -10,16 +10,19 @@ import UIKit
 
 struct CompositionalLayout {
     
-    static func layout(_ snapshot: CompositionalLayoutSnapshot)-> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout.init { index, environment in
+    static func layout(_ snapshot: CompositionalLayoutSnapshot) -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout.init { index, _ in
             let section = snapshot.sectionIdentifiers[index]
             switch section {
             case .releases:
                 return CompositionalLayout.carouselLayout()
+
             case .populars:
                 return CompositionalLayout.gridLayout()
+
             case .comics:
                 return CompositionalLayout.gridHorizontalLayout()
+
             case .stories:
                 return CompositionalLayout.buttonLayout()
             }
@@ -27,7 +30,7 @@ struct CompositionalLayout {
         return layout
     }
     
-    private static func carouselLayout()-> NSCollectionLayoutSection {
+    private static func carouselLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -42,7 +45,7 @@ struct CompositionalLayout {
         return section
     }
     
-    private static func gridLayout()-> NSCollectionLayoutSection {
+    private static func gridLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -57,7 +60,7 @@ struct CompositionalLayout {
         return section
     }
    
-    private static func gridHorizontalLayout()-> NSCollectionLayoutSection {
+    private static func gridHorizontalLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -73,7 +76,7 @@ struct CompositionalLayout {
         return section
     }
     
-    private static func buttonLayout()-> NSCollectionLayoutSection {
+    private static func buttonLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -88,7 +91,7 @@ struct CompositionalLayout {
         return section
     }
     
-    private static func supplementaryItem()-> NSCollectionLayoutBoundarySupplementaryItem {
+    private static func supplementaryItem() -> NSCollectionLayoutBoundarySupplementaryItem {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: itemSize, elementKind: CompositionalLayoutSection.SupplementaryElementKind.sectionHeader, alignment: .top)
         return header

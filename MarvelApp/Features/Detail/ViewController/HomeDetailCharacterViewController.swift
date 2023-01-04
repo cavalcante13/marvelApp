@@ -143,13 +143,13 @@ final class HomeDetailCharacterViewController: ViewController {
             return self?.cell(collectionView: collectionView, indexPath: indexPath, item: item)
         })
         
-        let sectionRegistration: UICollectionView.SupplementaryRegistration<CompositionalLayoutHeaderView> = .init(elementKind: CompositionalLayoutSection.SupplementaryElementKind.sectionHeader) { [weak self] headerView, kind, indexPath in
+        let sectionRegistration: UICollectionView.SupplementaryRegistration<CompositionalLayoutHeaderView> = .init(elementKind: CompositionalLayoutSection.SupplementaryElementKind.sectionHeader) { [weak self] headerView, _, indexPath in
             if let title = self?.datasource?.snapshot().sectionIdentifiers[indexPath.section].title {
                 headerView.set(title: title)
             }
         }
         
-        self.datasource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+        self.datasource?.supplementaryViewProvider = { collectionView, _, indexPath in
             return collectionView.dequeueConfiguredReusableSupplementary(using: sectionRegistration, for: indexPath)
         }
     }
@@ -175,20 +175,22 @@ final class HomeDetailCharacterViewController: ViewController {
         switch item {
         case .comics(let data):
             let cell = collectionView.dequeue(cell: ImageViewCell.self, indexPath: indexPath)
-            cell.set(thumbnail: data.thumbnail)
-            cell.setAccessibility(
+            cell?.set(thumbnail: data.thumbnail)
+            cell?.setAccessibility(
                 Strings.Accessibility.Detail.Characters.Comics.label,
                 value: Strings.Accessibility.Detail.Characters.Comics.value(indexPath.item + 1, snapshot.numberOfItems(inSection: .comics))
             )
-            return cell
+            return cell ?? .init()
+        
         case .stories(let data):
             let cell = collectionView.dequeue(cell: ButtonViewCell.self, indexPath: indexPath)
-            cell.set(title: data.title, action: nil)
-            cell.setAccessibility(
+            cell?.set(title: data.title, action: nil)
+            cell?.setAccessibility(
                 Strings.Accessibility.Detail.Characters.Stories.label(data.title ?? ""),
                 value: Strings.Accessibility.Detail.Characters.Stories.value(indexPath.item + 1, snapshot.numberOfItems(inSection: .stories))
             )
-            return cell
+            return cell ?? .init()
+
         default:
             return nil
         }

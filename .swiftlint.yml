@@ -1,0 +1,130 @@
+# paths to ignore during linting. Takes precedence over `included`.
+included:
+  - MarvelApp
+
+# only correctables for now
+whitelist_rules:
+
+  # default:
+  - colon
+  - comma
+  - trailing_comma
+  - statement_position
+  - modifier_order
+  - empty_enum_arguments
+  - empty_parameters
+  - empty_parentheses_with_trailing_closure
+  - leading_whitespace
+  - legacy_cggeometry_functions
+  - legacy_constant
+  - legacy_constructor
+  - legacy_nsgeometry_functions
+  - protocol_property_accessors_order
+  - redundant_discardable_let
+  - redundant_objc_attribute
+  - redundant_optional_initialization
+  - redundant_void_return
+  - return_arrow_whitespace
+  - trailing_semicolon
+  - unneeded_parentheses_in_closure_argument
+  - operator_usage_whitespace
+  - mark
+  - trailing_newline
+  - unused_control_flow_label
+  - void_return
+  - unused_closure_parameter
+  - vertical_whitespace_between_cases
+  - unused_import
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace
+  - custom_rules
+  - force_unwrapping
+  - force_cast
+  - force_try
+
+
+# configurations
+force_unwrapping:
+  severity: error
+
+force_cast:
+  severity: error
+
+force_try:
+  severity: error
+
+vertical_whitespace_between_cases:
+  severity: warning
+
+vertical_whitespace_closing_braces:
+  severity: warning
+
+modifier_order:
+  severity: warning
+
+statement_position:
+  severity: warning
+
+trailing_comma:
+  severity: warning
+
+colon:
+  severity: warning
+
+vertical_whitespace:
+  max_empty_lines: 2
+  severity: warning
+
+comma: warning
+empty_enum_arguments: warning
+empty_parameters: warning
+empty_parentheses_with_trailing_closure: warning
+leading_whitespace: warning
+legacy_cggeometry_functions: warning
+legacy_constant: warning
+legacy_constructor: warning
+mark: warning
+legacy_nsgeometry_functions: warning
+operator_usage_whitespace: warning
+protocol_property_accessors_order: warning
+redundant_discardable_let: warning
+redundant_objc_attribute: warning
+redundant_optional_initialization: warning
+redundant_void_return: warning
+return_arrow_whitespace: warning
+trailing_newline: warning
+trailing_semicolon: warning
+unneeded_parentheses_in_closure_argument: warning
+unused_closure_parameter: warning
+unused_control_flow_label: warning
+unused_import: warning
+void_return: warning
+
+# Use "xcode" so that when you build, the result will be shown in Xcode
+reporter: "xcode"
+
+custom_rules:
+    spacing_conformance:
+        included: ".*\\.swift"
+        name: "Spacing Conformance"
+        regex: "\\)\\{"
+        message: "Please add a space between parentheses and braces."
+        severity: warning
+    non_weak_data_source:
+        included: ".*.swift"
+        name: "Retain Cycle"
+        regex: '^\ *(fileprivate var|private var|public var|internal var|var)\ *(dataSource|[a-zA-Z]+(?i)(dataSource))'
+        message: "DataSource may be weak."
+        severity: error
+    non_weak_delegate:
+        included: ".*.swift"
+        name: "Retain Cycle"
+        regex: '^\ *(fileprivate var|private var|public var|internal var|var)\ *(delegate|[a-zA-Z]+(?i)(delegate))'
+        message: "Delegate may be weak."
+        severity: error
+    do_not_use_unowned_self:
+        included: ".*\\.swift"
+        name: "Do not use unowned self"
+        regex: "(unowned self)"
+        message: "Do not use unowned self. Use weak self instead."
+        severity: error

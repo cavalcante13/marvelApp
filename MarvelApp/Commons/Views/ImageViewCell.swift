@@ -49,4 +49,3 @@ final class ImageViewCell: CollectionViewCell {
         accessibilityValue = value
     }
 }
-

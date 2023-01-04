@@ -9,7 +9,7 @@ import UIKit
 
 class ButtonViewCell: CollectionViewCell {
     
-    typealias ActionButton = ()-> Swift.Void
+    typealias ActionButton = () -> Swift.Void
     private(set) var button: UIButton = .init(type: .custom)
     
     var action: ActionButton?

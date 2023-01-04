@@ -33,6 +33,7 @@ final class HomeDetailCharacterViewModel: HomeDetailCharacterViewModelProtocol {
                 switch completion {
                 case .failure(let error):
                     self?.presentable?.failed(error)
+
                 default:
                     break
                 }

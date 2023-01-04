@@ -68,13 +68,13 @@ final class HomeCharactersViewController: ViewController {
             return self?.cell(collectionView: collectionView, indexPath: indexPath, item: item)
         })
         
-        let sectionRegistration: UICollectionView.SupplementaryRegistration<CompositionalLayoutHeaderView> = .init(elementKind: CompositionalLayoutSection.SupplementaryElementKind.sectionHeader) { [weak self] headerView, kind, indexPath in
+        let sectionRegistration: UICollectionView.SupplementaryRegistration<CompositionalLayoutHeaderView> = .init(elementKind: CompositionalLayoutSection.SupplementaryElementKind.sectionHeader) { [weak self] headerView, _, indexPath in
             if let title = self?.datasource?.snapshot().sectionIdentifiers[indexPath.section].title {
                 headerView.set(title: title)
             }
         }
         
-        self.datasource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+        self.datasource?.supplementaryViewProvider = { collectionView, _, indexPath in
             return collectionView.dequeueConfiguredReusableSupplementary(using: sectionRegistration, for: indexPath)
         }
     }
@@ -91,12 +91,13 @@ final class HomeCharactersViewController: ViewController {
         switch item {
         case .characters(let data):
             let cell = collectionView.dequeue(cell: HomeCharactersCollectionViewCell.self, indexPath: indexPath)
-            cell.set(character: data)
-            cell.setAccessibility(
+            cell?.set(character: data)
+            cell?.setAccessibility(
                 label: Strings.Accessibility.Home.Characters.label(data.name ?? ""),
                 value: Strings.Accessibility.Home.Characters.value(indexPath.item + 1, snapshot.numberOfItems)
             )
-            return cell
+            return cell ?? .init()
+
         default:
             return nil
         }
@@ -133,6 +134,7 @@ extension HomeCharactersViewController: UICollectionViewDelegate, UIScrollViewDe
             switch item {
             case .characters(let character):
                 coordinator.push(.detail(character))
+
             default:
                 break
             }

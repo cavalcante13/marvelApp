@@ -17,10 +17,13 @@ enum CompositionalLayoutSection: Int, Hashable {
         switch self {
         case .releases:
             return Strings.Localizable.Layout.Sections.Releases.title
+
         case .populars:
             return Strings.Localizable.Layout.Sections.Populars.title
+
         case .comics:
             return Strings.Localizable.Layout.Sections.Comics.title
+
         case .stories:
             return Strings.Localizable.Layout.Sections.Stories.title
         }

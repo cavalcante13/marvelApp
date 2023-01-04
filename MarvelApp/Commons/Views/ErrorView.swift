@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-typealias ActionButton = ()-> Swift.Void
+typealias ActionButton = () -> Swift.Void
 
 protocol GenericErrorViewProtocol {
     func show(inView: UIView, message: String, action: ActionButton?)
@@ -25,7 +25,7 @@ final class ErrorView: View, GenericErrorViewProtocol {
         didSet { self.messageLabel.text = message }
     }
     
-    convenience override init() {
+    override convenience init() {
         self.init(message: "")
     }
     
@@ -35,7 +35,7 @@ final class ErrorView: View, GenericErrorViewProtocol {
     }
     
     @available(*, unavailable)
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         nil
     }
     

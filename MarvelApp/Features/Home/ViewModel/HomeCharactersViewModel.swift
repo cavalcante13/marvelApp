@@ -36,8 +36,7 @@ final class HomeCharactersViewModel: HomeCharactersViewModelProtocol {
                 switch completion {
                 case .failure(let error):
                     self?.presentable?.failed(error)
-                default:
-                    break
+                default: break
                 }
             }, receiveValue: { [weak self] data in
                 self?.presentable?.success(data.data.results)

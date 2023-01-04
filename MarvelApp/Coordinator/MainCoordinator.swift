@@ -39,6 +39,7 @@ final class AppCoordinator: Coordinator {
                                                         coordinator: self,
                                                         loadingIndicator: progressHUD,
                                                         errorView: errorView)
+
         case .detail(let character):
             let comicsRepo = CharactersComicsRepository()
             let storiesRepo = CharactersStoriesRepository()
