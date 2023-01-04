@@ -13,6 +13,7 @@ MarvelApp is an iPhone app that presents characters, comics and stories from Mar
   - Infinite Fetching Data for Characters
   - VoiceOver and Dynamic Font Type Accessibility
   - Multi language support - EN, PT-BR
+  - Swiftlint to style and conventions
   - Multi Screen and Multi Orientation Support (portrait and landscape)
 
 # Technical Stack
