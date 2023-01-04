@@ -93,7 +93,8 @@ final class HomeCharactersViewController: ViewController {
             let cell = collectionView.dequeue(cell: HomeCharactersCollectionViewCell.self, indexPath: indexPath)
             cell.set(character: data)
             cell.setAccessibility(
-                message: Strings.Accessibility.Home.Characters.item(indexPath.item + 1, snapshot.numberOfItems, data.name ?? "")
+                label: Strings.Accessibility.Home.Characters.label(data.name ?? ""),
+                value: Strings.Accessibility.Home.Characters.value(indexPath.item + 1, snapshot.numberOfItems)
             )
             return cell
         default:
@@ -105,7 +106,9 @@ final class HomeCharactersViewController: ViewController {
 extension HomeCharactersViewController: HomeCharactersVieModelPresentable {
     
     func loading() {
-        self.loadingIndicator.show()
+        if !UIAccessibility.isVoiceOverRunning {
+            self.loadingIndicator.show()
+        }
     }
     
     func success(_ data: [Character]) {

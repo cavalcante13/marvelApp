@@ -6,7 +6,10 @@
   
 */
 "App.Navigation.BackButton" = "Voltar";
-"Home.Characters.item" = "%d de %d, personagem %@";
-"Detail.Characters.comics" = "%d de %d";
-"Detail.Characters.stories" = "%d de %d, história %@";
+"Home.Characters.label" = "Personagem %@";
+"Home.Characters.value" = "%d de %d";
+"Detail.Characters.Comics.value" = "%d de %d";
+"Detail.Characters.Comics.label" = "Revista em quadrinho";
+"Detail.Characters.Stories.value" = "%d de %d";
+"Detail.Characters.Stories.label" = "História %@";
 "Home.Characters.section" = "Seção %@";

@@ -51,10 +51,11 @@ final class HomeCharactersCollectionViewCell: CollectionViewCell {
         }
     }
     
-    func setAccessibility(message: String) {
+    func setAccessibility(label: String, value: String) {
         isAccessibilityElement = true
         accessibilityTraits = .button
-        accessibilityLabel = message
+        accessibilityLabel = label
+        accessibilityValue = value
     }
 
     private func configureStackView() {

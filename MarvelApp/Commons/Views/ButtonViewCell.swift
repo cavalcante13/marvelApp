@@ -47,8 +47,9 @@ class ButtonViewCell: CollectionViewCell {
         self.button.setTitle(title, for: .normal)
     }
     
-    func setAccessibility(message: String) {
+    func setAccessibility(_ label: String, value: String) {
         isAccessibilityElement = true
-        accessibilityLabel = message
+        accessibilityLabel = label
+        accessibilityValue = value
     }
 }
