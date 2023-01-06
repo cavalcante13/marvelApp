@@ -8,15 +8,8 @@
 import UIKit
 import Models
 
-enum Screens {
-    case home
-    case detail(Character)
-}
-
 protocol Coordinator {
     var nav: UINavigationController { get }
     
     func start()
-    
-    func push(_ screen: Screens)
 }

@@ -18,19 +18,16 @@ final class HomeDetailCharacterViewController: ViewController {
     private var nameLabel: UILabel = .init()
     private var descriptionLabel: UILabel = .init()
     private var collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: .init())
+    
     private var datasource: CompositionalLayoutDatasource?
     private var snapshot: CompositionalLayoutSnapshot = .init()
-    private var bag: Set<AnyCancellable> = .init()
-    private var viewModel: HomeDetailCharacterViewModelProtocol
-    private var indicatorLoading: LoadingIndicator
-    private var errorView: GenericErrorViewProtocol
+    private let loadingIndicator: LoadingProgressHUD = .init()
+    private let errorView: ErrorView = .init()
     
-    init(viewModel: HomeDetailCharacterViewModelProtocol,
-         indicatorLoading: LoadingIndicator,
-         errorView: GenericErrorViewProtocol) {
+    private var viewModel: HomeDetailCharacterViewModelProtocol
+    
+    init(viewModel: HomeDetailCharacterViewModelProtocol) {
         self.viewModel = viewModel
-        self.indicatorLoading = indicatorLoading
-        self.errorView = errorView
         super.init(nibName: nil, bundle: nil)
         self.viewModel.presentable = self
     }
@@ -200,7 +197,7 @@ extension HomeDetailCharacterViewController: HomeDetailCharactersVieModelPresent
     
     func loading() {
         if !UIAccessibility.isVoiceOverRunning {
-            self.indicatorLoading.show()
+            self.loadingIndicator.show()
         }
     }
     
@@ -212,11 +209,11 @@ extension HomeDetailCharacterViewController: HomeDetailCharactersVieModelPresent
         self.snapshot.appendItems(storiesItems, toSection: .stories)
         
         self.updateDatasource()
-        self.indicatorLoading.stop()
+        self.loadingIndicator.stop()
     }
     
     func failed(_ error: Error) {
-        self.indicatorLoading.stop()
+        self.loadingIndicator.stop()
         self.errorView.show(inView: collectionView, message: error.localizedDescription) { [weak self] in
             self?.viewModel.loadData()
         }

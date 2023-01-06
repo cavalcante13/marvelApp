@@ -3,7 +3,7 @@
 
 import Foundation
 
-// swiftlint:disable superfluous_disable_command file_length implicit_return prefer_self_in_static_references
+// swiftlint:disable superfluous_disable_command file_length implicit_return
 
 // MARK: - Strings
 
@@ -13,31 +13,28 @@ public enum Strings {
   public enum Accessibility {
     public enum App {
       public enum Navigation {
-        /// Accessibility.strings
-        ///   MarvelApp
-        /// 
-        ///   Created by Diego on 03/01/23.
-        public static let backButton = Strings.tr("Accessibility", "App.Navigation.BackButton", fallback: "Back")
+        /// Back
+        public static let backButton = Strings.tr("Accessibility", "App.Navigation.BackButton")
       }
     }
     public enum Detail {
       public enum Characters {
         public enum Comics {
           /// Comic book
-          public static let label = Strings.tr("Accessibility", "Detail.Characters.Comics.label", fallback: "Comic book")
+          public static let label = Strings.tr("Accessibility", "Detail.Characters.Comics.label")
           /// %d of %d
           public static func value(_ p1: Int, _ p2: Int) -> String {
-            return Strings.tr("Accessibility", "Detail.Characters.Comics.value", p1, p2, fallback: "%d of %d")
+            return Strings.tr("Accessibility", "Detail.Characters.Comics.value", p1, p2)
           }
         }
         public enum Stories {
           /// Story %@
           public static func label(_ p1: Any) -> String {
-            return Strings.tr("Accessibility", "Detail.Characters.Stories.label", String(describing: p1), fallback: "Story %@")
+            return Strings.tr("Accessibility", "Detail.Characters.Stories.label", String(describing: p1))
           }
           /// %d of %d
           public static func value(_ p1: Int, _ p2: Int) -> String {
-            return Strings.tr("Accessibility", "Detail.Characters.Stories.value", p1, p2, fallback: "%d of %d")
+            return Strings.tr("Accessibility", "Detail.Characters.Stories.value", p1, p2)
           }
         }
       }
@@ -46,15 +43,15 @@ public enum Strings {
       public enum Characters {
         /// Character %@
         public static func label(_ p1: Any) -> String {
-          return Strings.tr("Accessibility", "Home.Characters.label", String(describing: p1), fallback: "Character %@")
+          return Strings.tr("Accessibility", "Home.Characters.label", String(describing: p1))
         }
         /// Section %@
         public static func section(_ p1: Any) -> String {
-          return Strings.tr("Accessibility", "Home.Characters.section", String(describing: p1), fallback: "Section %@")
+          return Strings.tr("Accessibility", "Home.Characters.section", String(describing: p1))
         }
         /// %d of %d
         public static func value(_ p1: Int, _ p2: Int) -> String {
-          return Strings.tr("Accessibility", "Home.Characters.value", p1, p2, fallback: "%d of %d")
+          return Strings.tr("Accessibility", "Home.Characters.value", p1, p2)
         }
       }
     }
@@ -64,36 +61,33 @@ public enum Strings {
       public enum TryAgain {
         public enum Button {
           /// Try again
-          public static let title = Strings.tr("Localizable", "ErrorView.TryAgain.Button.Title", fallback: "Try again")
+          public static let title = Strings.tr("Localizable", "ErrorView.TryAgain.Button.Title")
         }
       }
     }
     public enum Home {
       public enum Navigation {
-        /// Localizable.strings
-        ///   MarvelApp
-        /// 
-        ///   Created by Diego Costa on 28/12/22.
-        public static let title = Strings.tr("Localizable", "Home.Navigation.Title", fallback: "Marvel App")
+        /// Marvel App
+        public static let title = Strings.tr("Localizable", "Home.Navigation.Title")
       }
     }
     public enum Layout {
       public enum Sections {
         public enum Comics {
           /// Comics
-          public static let title = Strings.tr("Localizable", "Layout.Sections.Comics.Title", fallback: "Comics")
+          public static let title = Strings.tr("Localizable", "Layout.Sections.Comics.Title")
         }
         public enum Populars {
           /// Populars
-          public static let title = Strings.tr("Localizable", "Layout.Sections.Populars.Title", fallback: "Populars")
+          public static let title = Strings.tr("Localizable", "Layout.Sections.Populars.Title")
         }
         public enum Releases {
           /// Releases
-          public static let title = Strings.tr("Localizable", "Layout.Sections.Releases.Title", fallback: "Releases")
+          public static let title = Strings.tr("Localizable", "Layout.Sections.Releases.Title")
         }
         public enum Stories {
           /// Stories
-          public static let title = Strings.tr("Localizable", "Layout.Sections.Stories.Title", fallback: "Stories")
+          public static let title = Strings.tr("Localizable", "Layout.Sections.Stories.Title")
         }
       }
     }
@@ -105,8 +99,8 @@ public enum Strings {
 // MARK: - Implementation Details
 
 extension Strings {
-  private static func tr(_ table: String, _ key: String, _ args: CVarArg..., fallback value: String) -> String {
-    let format = BundleToken.bundle.localizedString(forKey: key, value: value, table: table)
+  private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }

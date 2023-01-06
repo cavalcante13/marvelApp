@@ -7,13 +7,9 @@
 import UIKit
 import Requests
 import Models
-import Combine
 
-final class AppCoordinator: Coordinator {
+final class MainCoordinator: Coordinator {
     
-    @Published
-    private var vc: UIViewController?
-    private var bag: Set<AnyCancellable> = .init()
     var nav: UINavigationController
     
     init(_ nav: UINavigationController) {
@@ -21,36 +17,24 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        $vc.sink { [weak self] vc in
-            guard let viewController = vc else { return }
-            self?.nav.pushViewController(viewController, animated: true)
-        }.store(in: &bag)
-        self.push(.home)
+        goToHome()
     }
     
-    func push(_ screens: Screens) {
-        switch screens {
-        case .home:
-            let repository = CharactersRepository()
-            let viewModel = HomeCharactersViewModel(repository: repository)
-            let progressHUD = LoadingProgressHUD()
-            let errorView = ErrorView()
-            self.vc = HomeCharactersViewController.init(viewModel: viewModel,
-                                                        coordinator: self,
-                                                        loadingIndicator: progressHUD,
-                                                        errorView: errorView)
-
-        case .detail(let character):
-            let comicsRepo = CharactersComicsRepository()
-            let storiesRepo = CharactersStoriesRepository()
-            let progressHUD = LoadingProgressHUD()
-            let errorView = ErrorView()
-            let viewModel = HomeDetailCharacterViewModel(character: character,
-                                                  comicsRepo: comicsRepo,
-                                                  storiesRepo: storiesRepo)
-            self.vc = HomeDetailCharacterViewController(viewModel: viewModel,
-                                                        indicatorLoading: progressHUD,
-                                                        errorView: errorView)
-        }
+    func goToHome() {
+        let repository = CharactersRepository()
+        let viewModel = HomeCharactersViewModel(repository: repository)
+        let vc = HomeCharactersViewController(viewModel: viewModel,
+                                                    coordinator: self)
+        nav.pushViewController(vc, animated: true)
+    }
+    
+    func goToDetail(_ character: Character) {
+        let comicsRepo = CharactersComicsRepository()
+        let storiesRepo = CharactersStoriesRepository()
+        let viewModel = HomeDetailCharacterViewModel(character: character,
+                                              comicsRepo: comicsRepo,
+                                              storiesRepo: storiesRepo)
+        let vc = HomeDetailCharacterViewController(viewModel: viewModel)
+        nav.pushViewController(vc, animated: true)
     }
 }

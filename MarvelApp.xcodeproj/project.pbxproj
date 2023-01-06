@@ -304,7 +304,7 @@
 			children = (
 				F5C466B9292272DF0068BA2A /* App */,
 				D378BC0C2925AAA6006ACE83 /* Coordinator */,
-				F5A4A1FF292271D500813E1E /* Features */,
+				F5A4A1FF292271D500813E1E /* Scenes */,
 				F5C466BC292272FF0068BA2A /* Commons */,
 				F5C466B8292272D80068BA2A /* Resources */,
 			);
@@ -326,13 +326,13 @@
 			path = Typealias;
 			sourceTree = "<group>";
 		};
-		F5A4A1FF292271D500813E1E /* Features */ = {
+		F5A4A1FF292271D500813E1E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				F5A4A200292271E900813E1E /* Home */,
 				D378BBF42925196C006ACE83 /* Detail */,
 			);
-			path = Features;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		F5A4A200292271E900813E1E /* Home */ = {

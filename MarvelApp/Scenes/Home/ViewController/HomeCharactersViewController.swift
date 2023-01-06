@@ -12,22 +12,19 @@ import Models
 import Requests
 
 final class HomeCharactersViewController: ViewController {
+    
     private var collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: .init())
     private var datasource: CompositionalLayoutDatasource?
     private var snapshot: CompositionalLayoutSnapshot = .init()
-    private var coordinator: Coordinator
-    private var loadingIndicator: LoadingIndicator
+    private let loadingIndicator: LoadingProgressHUD = .init()
+    private let errorView: ErrorView = .init()
     private var viewModel: HomeCharactersViewModelProtocol
-    private var errorView: GenericErrorViewProtocol
+    private var coordinator: MainCoordinator
     
     init(viewModel: HomeCharactersViewModelProtocol,
-         coordinator: Coordinator,
-         loadingIndicator: LoadingIndicator,
-         errorView: GenericErrorViewProtocol) {
+         coordinator: MainCoordinator) {
         self.viewModel = viewModel
         self.coordinator = coordinator
-        self.loadingIndicator = loadingIndicator
-        self.errorView = errorView
         super.init(nibName: nil, bundle: nil)
         self.viewModel.presentable = self
     }
@@ -133,8 +130,8 @@ extension HomeCharactersViewController: UICollectionViewDelegate, UIScrollViewDe
         if let item = datasource?.itemIdentifier(for: indexPath) {
             switch item {
             case .characters(let character):
-                coordinator.push(.detail(character))
-
+                coordinator.goToDetail(character)
+                
             default:
                 break
             }
